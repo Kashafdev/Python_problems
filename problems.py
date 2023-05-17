@@ -312,7 +312,142 @@ def problem_28():
         if n % i == 0:
             print(i)
 
-#problem 29:
+#problem 29:  Display negative of a number
+def problem_29():
+    num = 5
+    negative_num = -num
+    print("Negative of", num, "is", negative_num)
+
+#  Take two positive integers a and n from the user. Calculate and display an. Assume
+# that the power operator is not available.
+def problem_30():
+    a = int(input("Enter a positive integer : "))
+    n = int(input("Enter a positive integer : "))
+    result = 1
+    for _ in range(n):
+        result *= a
+    print(result)
+
+#  Take three number from the user and determine the largest number. Do it using a
+# loop
+def problem_31():
+    largest = None
+    for i in range(3):
+        num = float(input("Enter a number: "))
+        if largest is None or num > largest:
+            largest = num
+    print(largest)
+
+#problem 32 :Input a positive integer from the user and determine where the number is a perfect
+# number or not. (a perfect number is a positive integer that is equal to the sum of its
+# proper positive divisors, that is, the sum of its positive divisors excluding the number
+# itself.)
+def problem_32():
+    num = int(input("Enter a positive integer: "))
+    divisors = 0
+    for i in range(1, num):
+        if num % i == 0:
+            divisors += i
+
+    if divisors == num:
+        print(num, "is a perfect number.")
+    else:
+        print(num, "is not a perfect number.")
+
+#problem 33: Find absolute of an input. Assume that the absolute operator is not available.
+def problem_33():
+    num = float(input("Enter a number: "))
+    if num < 0:
+        abs_value = -num
+    else:
+        abs_value = num
+    print("The absolute value of", num, "is", abs_value)
+
+#problem 34: Take n number from the user and determine the largest number entered by the user,
+# where n is taken from the user as well.
+def problem_34():
+    n = int(input("enter the number of values: "))
+    largest = None
+
+    for i in range(n):
+     num = float(input("Enter a number: "))
+    if largest is None or num > largest:
+       largest = num
+
+    print(largest)
+
+
+# problem 35: Take n numbers from the user and determine both the smallest and the largest
+# number entered by the user, where n is taken from the user as well.
+def problem_35():
+    n = int(input("enter the number of values: "))
+    largest = None
+    smallest = None
+
+    for i in range(n):
+       num = float(input("Enter a number: "))
+       if smallest is None or num < smallest:
+            smallest = num
+       if largest is None or num > largest:
+             largest = num
+    print(smallest)
+    print(largest)
+
+# problem 36: Input 2 number and find if both are even, both are odd, or 1 even 1 odd.
+def problem_36():
+    num1 = int(input("Enter the first number: "))
+    num2 = int(input("Enter the second number: "))
+
+    if num1 % 2 == 0 and num2 % 2 == 0:
+        print("Both numbers are even.")
+    elif num1 % 2 != 0 and num2 % 2 != 0:
+        print("Both numbers are odd.")
+    else:
+        print("One number is even and one is odd.")
+
+# problem 37: Input 3 numbers and find how many are odd.
+def problem_37():
+    num1 = int(input("Enter the first number: "))
+    num2 = int(input("Enter the second number: "))
+    num3 = int(input("Enter the third number: "))
+    odd = 0
+    if num1 % 2 != 0:
+        odd += 1
+
+    if num2 % 2 != 0:
+        odd += 1
+
+    if num3 % 2 != 0:
+        odd += 1
+
+    print("Number of odd numbers:", odd)
+
+#problem 38:Input 3 numbers and print the 2 largest numbers/
+def problem_38():
+    num1 = int(input("Enter the first number: "))
+    num2 = int(input("Enter the second number: "))
+    num3 = int(input("Enter the third number: "))
+
+    largest = max(num1, num2, num3)
+    smallest = min(num1, num2, num3)
+    sum = num1 + num2 + num3
+    second_largest = sum- largest - smallest
+    print("The two largest numbers are:", largest, "and", second_largest)
+
+
+#problem 39:Input a number and find if it is 2-digit positive integer or not.
+def problem_39():
+    number = int(input("Enter a number: "))
+    if number > 9 and number < 100:
+        print("The number is a 2-digit positive integer.")
+    else:
+        print("The number is not a 2-digit positive integer.")
+
+
+#
+
+
+
 
 
 
@@ -347,7 +482,17 @@ if __name__ == '__main__':
     # problem_25()
     # problem_26()
     # problem_27()
-    problem_28()
+    # problem_28()
+    # problem_30()
+    # problem_31()
+    # problem_32()
+    # problem_33()
+    # problem_34()
+    # problem_35()
+    # problem_36()
+    # problem_37()
+    # problem_38()
+    problem_39()
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
 
 
