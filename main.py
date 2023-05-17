@@ -174,11 +174,11 @@ def problem_18():
         print("Odd Number")
 
 # Calculate the difference between two times given in 24-hour (hh: mm) format.
-def problem_19():
-    # time1= float(input("Enter the time1"))
-    # time2 = float(input("Enter the time2"))
-    # hours, minutes = calculate_time_difference(time1, time2)
-    # print("hours, mintues")
+# def problem_19():
+#     # time1= float(input("Enter the time1"))
+#     # time2 = float(input("Enter the time2"))
+#     # hours, minutes = calculate_time_difference(time1, time2)
+#     # print("hours, mintues")
 
 # Input 3 numbers. Determine whether: all are same, all are different or exactly two
 # are same.
@@ -227,6 +227,134 @@ def problem_23():
     print("Average of ", n, "numbers is: ", average)
 
 # Displaying positive integers in the range from 1 to n, where n is taken from the user.
+def problem_24():
+    num = 1
+    n = int(input("Enter the number"))
+    for num in range(1, n):
+        if num >= 1:
+            print(num)
+
+# Calculate the factorial of a positive integer entered by the user
+def problem_25():
+    num = int(input("Enter a positive integer: "))
+    factorial = 1
+    if num < 0:
+        print("Factorial is not defined for negative numbers.")
+    elif num == 0:
+        print("The factorial of 0 is 1.")
+    else:
+        for i in range(1, num + 1):
+            factorial *= i
+        print("The factorial of", num, "is", factorial)
+
+# Take two positive integers a and n from the user. Calculate and display an. Assume
+# that the power operator is not available.
+def problem_26():
+    a = int(input("Enter a positive integer (a): "))
+    n = int(input("Enter a positive integer (n): "))
+
+    result = 1
+    for i in range(n):
+        result *= a
+
+    print(result)
+
+# Take three number from the user and determine the largest number. Do it using a
+# loop
+def problem_27():
+    largest = None
+
+    for i in range(3):
+        num = int(input("Enter the number: "))
+        if largest is None or num > largest:
+            largest = num
+    print(largest)
+
+
+
+# Take n number from the user and determine the largest number entered by the user,
+# where n is taken from the user as well.
+def problem_28():
+    n = int(input("Enter the number n: "))
+    largest = None
+
+    for i in range(n):
+        num = int(input("Enter the number: "))
+        if largest is None or num > largest:
+            largest = num
+    print(largest)
+
+#  Take n numbers from the user and determine both the smallest and the largest
+# number entered by the user, where n is taken from the user as well.
+def problem_29():
+    n = int(input("Enter the number n: "))
+    largest = None
+    smallest = None
+
+    for i in range(n):
+        num = int(input("Enter the number: "))
+        if smallest is None or num < smallest:
+            smallest = num
+        if largest is None or num > largest:
+            largest = num
+    print(largest)
+    print(smallest)
+
+# Take n numbers from the user and determine that how many positive and negative
+# integers were entered by the user
+def problem_30():
+    n = int(input("Enter the number n: "))
+    positive_count = 0
+    negative_count = 0
+
+    for i in range(n):
+        num = int(input("Enter the number: "))
+        if num > 0:
+            positive_count += 1
+        elif num < 0:
+            negative_count += 1
+
+    print(positive_count)
+    print(negative_count)
+
+#  Take a positive integer n from the user. Display all the divisors of n
+def problem_31():
+    n = int(input("Enter the number"))
+    for i in range(1, n+1):
+         if n % i == 0:
+             print(i)
+
+#Input a positive integer from the user and determine where the number is a perfect.......number itself.)
+def problem_32():
+    n = int(input("Enter a positive number: "))
+
+    divisor_sum = 0
+
+    for i in range(1, n):
+        if n % i == 0:
+            divisor_sum += i
+
+    if divisor_sum == n:
+        print(n, "is a perfect number.")
+    else:
+        print(n, "is not a perfect number.")
+
+# Input a positive integer from the user and determine whether is a prime number or
+# not.
+def problem_33():
+    n = int(input("Enter the positive integer:"))
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -274,8 +402,16 @@ if __name__ == '__main__':
     # problem_20()
     # problem_21()
     # problem_22()
-    problem_23()
-
+    # problem_23()
+    # problem_24()
+    # problem_25()
+    # problem_26()
+    # problem_27()
+    # problem_28()
+    # problem_29()
+    # problem_30()
+    # problem_31()
+    problem_32()
 
 
 
