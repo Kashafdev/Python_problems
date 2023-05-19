@@ -235,9 +235,9 @@ def problem_20():
 # problem 21:Input 3 numbers. Determine whether: all are same, all are different or exactly two
 # are same.
 def problem_21():
-    num1 = int(input("Enter the first number: "))
-    num2 = int(input("Enter the second number: "))
-    num3 = int(input("Enter the third number: "))
+    num1 = int(input("Enter first number: "))
+    num2 = int(input("Enter second number: "))
+    num3 = int(input("Enter third number"))
 
     if num1 == num2 == num3:
         print("All numbers are the same.")
@@ -431,8 +431,8 @@ def problem_38():
     largest = max(num1, num2, num3)
     smallest = min(num1, num2, num3)
     sum = num1 + num2 + num3
-    second_largest = sum- largest - smallest
-    print("The two largest numbers are:", largest, "and", second_largest)
+    sec_largest = sum - largest - smallest
+    print("The two largest numbers are:", largest, "and", sec_largest)
 
 
 #problem 39:Input a number and find if it is 2-digit positive integer or not.
@@ -441,14 +441,345 @@ def problem_39():
     if number > 9 and number < 100:
         print("The number is a 2-digit positive integer.")
     else:
-        print("The number is not a 2-digit positive integer.")
+        print("The number is not 2-digit positive integer.")
 
+
+#problem 40 :Input a 2-digit number and find the absolute difference between its digits
+def problem_40():
+    number = int(input("Enter a 2-digit number: "))
+    tens_digit = number // 10
+    ones_digit = number % 10
+    ab_difference = abs (tens_digit - ones_digit)
+    print(ab_difference)
+
+# problem 41: Input an integer (up to 4 digits) and store its reverse in another variable. Then
+# display both integers
+def problem_41():
+    number = int(input("Enter an integer up to 4 digits: "))
+    reversed_number = int(str(number)[::-1])
+    print("Reversed number:", reversed_number)
+
+#problem 42:Interchange two numbers
+def problem_42():
+    num1 = int(input("Enter the first number: "))
+    num2 = int(input("Enter the second number: "))
+
+    num1, num2 = num2, num1
+
+    print("swapping:")
+    print("num1 =", num1)
+    print("num2 =", num2)
+
+# problem 43: Interchange two numbers without using an extra variable.
+def problem_43():
+    num1 = int(input("Enter the first number: "))
+    num2 = int(input("Enter the second number: "))
+
+    num1 = num1 + num2
+    num2 = num1 - num2
+    num1 = num1 - num2
+
+    print("After swapping:")
+    print("num1 =", num1)
+    print("num2 =", num2)
+
+#problem 44 : Multiply a number with the sum of its digits.
+def problem_44():
+    number = 1234
+    digit_sum = sum(int(digit) for digit in str(number))
+    result = number * digit_sum
+    print(result)
+
+# problem 45:Input 2 numbers and print YES if 1st is divisible by 2nd
+def problem_45():
+    number1 = int(input("Enter the first number: "))
+    number2 = int(input("Enter the second number: "))
+
+    if number1 % number2 == 0:
+        print("YES")
+    else:
+        print("NO")
+
+# problem 46: Input 2 numbers and print YES if 2nd is divisible by 1st
+def problem_46():
+    number1 = int(input("Enter the first number: "))
+    number2 = int(input("Enter the second number: "))
+
+    if number2 % number1 == 0:
+        print("YES")
+    else:
+        print("NO")
+# problem 47: Input 2 numbers and print YES if one number is divisible by the other.
+def problem_47():
+    number1 = int(input("Enter the first number: "))
+    number2 = int(input("Enter the second number: "))
+
+    if number1 % number2 == 0 or number2 % number1 == 0:
+        print("YES")
+    else:
+        print("NO")
+
+# problem 48: Input numbers till user inputs a zero and display their sum
+def problem_48():
+    sum = 0
+    num = int(input("Enter a number: "))
+    while num != 0:
+        sum += num
+        num = int(input("Enter a number: "))
+    print("The sum of the entered numbers is:", sum)
+
+# problem 49: Input numbers till user inputs a zero and display the largest number
+def problem_49():
+    largest = 0
+
+    while True:
+        number = int(input("Enter a number: "))
+        if number == 0:
+            break
+        if number > largest:
+            largest = number
+    print("The largest number entered is:", largest)
+
+# problem 50: Input 10 numbers, and display the smallest number
+def problem_50():
+    smallest = None
+
+    for _ in range(10):
+        number = int(input("Enter a number: "))
+        if smallest is None or number < smallest:
+            smallest = number
+
+    print("The smallest number enter is :", smallest)
+
+# problem 51:Input 10 numbers, and display count of even and odd numbers, separately, at the
+# end
+def problem_51():
+    count_even = 0
+    count_odd = 0
+
+    for _ in range(10):
+        number = int(input("Enter a number: "))
+        if number % 2 == 0:
+            count_even += 1
+        else:
+            count_odd += 1
+
+    print("Count of even numbers:", count_even)
+    print("Count of odd numbers:", count_odd)
+
+#problem 52:input SLimit and Elimit from the user, and display even numbers between range,
+# with both limit, included.
+def problem_52():
+    start_limit = int(input("Enter the start limit: "))
+    end_limit = int(input("Enter the end limit: "))
+    for num in range(start_limit, end_limit + 1):
+        if num % 2 == 0:
+            print(num)
+
+#problem 53: Input SLimit and ELimit from the user and display only those numbers between
+# range which are divisible by 2 or 3 or 5, with both limits included
+def problem_53():
+    start_limit = int(input("Enter the start limit: "))
+    end_limit = int(input("Enter the end limit: "))
+    for num in range(start_limit, end_limit + 1):
+        if num % 2 == 0 or num % 3 == 0 or num % 5 == 0:
+            print(num)
+
+
+# problem 54: Input 2 numbers and find their GCD
+def problem_54():
+    num1 = int(input("Enter the first number: "))
+    num2 = int(input("Enter the second number: "))
+
+    while num2 != 0:
+        num1, num2 = num2, num1 % num2
+
+    gcd = num1
+    print("The GCD of", num1, "and", num2, "is:", gcd)
+
+
+ #problem 55: Input a number and display that how many digits it has
+def problem_55():
+    number = int(input("Enter a number: "))
+
+    digit_count = len(str(abs(number)))
+
+    print("The number", number, "has", digit_count, "digits.")
+
+#problem 56: Input a positive integer from the user and determine whether is a prime number or
+# not
+def problem_56():
+    num = int(input("Enter a positive integer: "))
+    if num <= 1:
+        print(num, "is not a prime number.")
+    else:
+        is_prime = True
+        for i in range(2, int(num ** 0.5) + 1):
+            if num % i == 0:
+                is_prime = False
+                break
+        if is_prime:
+            print(num, "is a prime number.")
+        else:
+            print(num, "is not a prime number.")
+
+
+# problem 57: Take a positive integer from the user. Displaying an error message and prompting
+# for input again and again if the user enters invalid input (negative or zero)
+def problem_57():
+    while True:
+        num = int(input("Enter a positive integer: "))
+        if num <= 0:
+            print("Invalid input. Please enter a positive integer.")
+        else:
+            break
+
+    print("Valid input received:", num)
+
+
+# problem 58:Write an algorithm to determine the sum of a variable number of positive integers
+# taken from the user. The algorithm should keep prompting the user for more input
+# until the user enters the sentinel value -999.
+def problem_58():
+    sum_of_integers = 0
+    while True:
+        num = int(input("Enter a positive integer: "))
+        if num == -999:
+            break
+        elif num <= 0:
+            print("Invalid input. Please enter a positive integer.")
+        else:
+            sum_of_integers += num
+    print("Sum of the positive integers:", sum_of_integers)
+
+#problem 59: Find absolute of an input. Assume that the absolute operator is not available.
+def problem_59():
+    def absolute_value(num):
+        if num < 0:
+            return -num
+        else:
+            return num
+
+    input_num = -5
+    abs_num = absolute_value(input_num)
+    print(abs_num)
+
+#problem 60:Input numbers till user inputs a zero, and display the smallest number
+# Check if it works for all positive inputs
+# Now check algorithm # 55 (largest number) if it works for all negative inputs
+# If you find any problem, then solve it.
+def problem_60():
+    smallest_num = None
+    num = None
+    while num != 0:
+        num = int(input("Enter a number: "))
+        if num != 0:
+            if smallest_num is None or num < smallest_num:
+                smallest_num = num
+    print(smallest_num)
+    largest_num = None
+    num = None
+    while num != 0:
+        num = int(input("Enter a number: "))
+        if num != 0:
+            if largest_num is None or num > largest_num:
+                largest_num = num
+    print(largest_num)
+
+# problem 61:Input 3 numbers and find their GCD
+def problem_61():
+    num1 = int(input("Enter first number:"))
+    num2 = int(input("Enter second number:"))
+    num3 = int(input("Enter third number:"))
+
+    while num2 != 0:
+        num1, num2 = num2, num1 % num2
+    gcd = num1
+    print("The GCD of the three numbers is:", gcd)
+
+# problem 62: Input 2 numbers and display their LCM
+def problem_62():
+    num1 = int(input("Enter the first number: "))
+    num2 = int(input("Enter the second number: "))
+    a = num1
+    b = num2
+    while b != 0:
+        a, b = b, a % b
+    lcm = (num1 * num2) // a
+    print("The LCM of the two numbers is:", lcm)
+
+#problem 63:Input a base-9 number, digit by digit, then convert it into decimal number. Digits of
+# the input will be entered in order from least significant to most significant. Since
+# valid digits are 0 to 8, hence any other input will be used as the sentinel value.
+def problem_63():
+    base9_num = 0
+    power = 0
+    while True:
+        digit = int(input("Enter the number: "))
+        if digit < 0 or digit > 8:
+            break
+        base9_num += digit * (9 ** power)
+        power += 1
+    print(base9_num)
+
+
+#problem 64 Input a base-9 number, digit by digit, then convert it into decimal number. Digits of
+# the input will be entered in order from most significant to least significant. Since
+# valid digits are 0 to 8, hence any other input will be used as sentinel value.
+def problem_64():
+    base9_num = 0
+    power = 0
+    digit = int(input("Enter the number: "))
+
+    while 0 <= digit <= 8:
+        base9_num += digit * (9 ** power)
+        power += 1
+        digit = int(input("Enter the next digit (0-8) or any other value to stop: "))
+
+    print("Decimal equivalent:", base9_num)
+
+
+# problem 65: Input a number and display its equivalent in base-9 (one digit per line, starting from
+# the least significant)
+
+
+# unit_list [{"unit":1, "cost":10, "margin":10, "price":10}
+# {"unit":2, "cost":5, "margin":5, "price":10}
+# {"unit":3, "cost":6, "margin":2, "price":8}
+# {"unit":4, "cost":7, "margin":3, "price":10}]
+def problem_70():
+    unit_list = [
+        {"unit": 1, "cost": 10, "margin": 10, "price": 10},
+        # {"unit": 2, "cost": 5, "margin": 5, "price": 10},
+        # {"unit": 3, "cost": 6, "margin": 2, "price": 8},
+        {"unit": 4, "cost": 7, "margin": 3, "price": 10}
+    ]
+    num_units = len(unit_list)
+    expected_units = set(range(1, num_units + 1))
+    for unit in unit_list:
+        expected_units.discard(unit['unit'])
+    if expected_units:
+        missing_units = ', '.join(str(unit) for unit in expected_units)
+        print(f"Error: Missing unit(s) {missing_units}")
+    else:
+        print("All units are present")
 
 #
 
+def problem_71():
+    unit_list = [
+        {"unit": 1, "cost": 10, "margin": 10, "price": 10},
+        {"unit": 2, "cost": 5, "margin": 5, "price": 10},
+        # {"unit": 3, "cost": 6, "margin": 2, "price": 8},
+        {"unit": 4, "cost": 7, "margin": 3, "price": 10}
+    ]
 
+    is_continuous = all(unit_list[i]["unit"] + 1 == unit_list[i+1]["unit"] for i in range(len(unit_list)-1))
 
-
+    if is_continuous:
+        print("OK")
+    else:
+        print("Error")
 
 
 
@@ -492,7 +823,34 @@ if __name__ == '__main__':
     # problem_36()
     # problem_37()
     # problem_38()
-    problem_39()
+    # problem_39()
+    # problem_40()
+    # problem_41()
+    # problem_42()
+    # problem_43()
+    # problem_44()
+    # problem_45()
+    # problem_46()
+    # problem_47()
+    # problem_48()
+    # problem_49()
+    # problem_50()
+    # problem_51()
+    # problem_52()
+    # problem_53()
+    # problem_54()
+    # problem_55()
+    # problem_56()
+    # problem_57()
+    # problem_58()
+    # problem_59()
+    # problem_60()
+    # problem_61()
+    # problem_62()
+    # problem_63()
+    problem_64()
+    # problem_70()
+    # problem_71()
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
 
 
