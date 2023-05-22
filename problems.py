@@ -742,44 +742,165 @@ def problem_64():
 # problem 65: Input a number and display its equivalent in base-9 (one digit per line, starting from
 # the least significant)
 
+def problem_65():
+    number = int(input("Enter a number: "))
+    result = []
+    while number > 0:
+        digit = number % 9
+        result.append(digit)
+        number //= 9
+    if len(result) == 0:
+        result.append(0)
+    result.reverse()
+    print("Equivalent in base-9:")
+    for digit in result:
+        print(digit)
 
-# unit_list [{"unit":1, "cost":10, "margin":10, "price":10}
-# {"unit":2, "cost":5, "margin":5, "price":10}
-# {"unit":3, "cost":6, "margin":2, "price":8}
-# {"unit":4, "cost":7, "margin":3, "price":10}]
+#problem 66: Input number and store its equivalent in base-9 as a single numeric value and
+# display it
+def problem_66():
+    number = int(input("Enter a number: "))
+
+    result = 0
+    multiplier = 1
+    while number > 0:
+        digit = number % 9
+        result += digit * multiplier
+        number //= 9
+        multiplier *= 10
+    print("Equivalent in base-9:", result)
+
+#problem 67: Input a base-9 number, digit by digit, then convert it into binary number a single
+# numeric value. Digits of the input will be entered in order from least significant to
+# most significant. Since valid digits are 0 to 8, hence any other input will be used as
+# sentinel value
+def problem_67():
+    base9_num = []
+    while True:
+        digit = input("Enter a digit (0-8) of the base-9 number (Enter any other value to stop): ")
+        if not digit.isdigit() or int(digit) > 8:
+            break
+        base9_num.append(int(digit))
+
+    if not base9_num:
+        print("No valid digits entered. Conversion not possible.")
+    else:
+        decimal_value = 0
+        for digit in base9_num:
+            decimal_value = decimal_value * 9 + digit
+
+        binary_value = bin(decimal_value)[2:]
+
+        print("Binary value: " + binary_value)
+
+
+# problem 68: Conversion of microseconds to weeks, days, hours, minutes, seconds, and remaining microseconds
+def problem_68():
+    n = int(input("Enter the number:"))
+    day = n // (24 * 3600)
+    n = n % (24 * 3600)
+    hour = n // 3600
+    n %= 3600
+    minutes = n // 60
+    n %= 60
+    seconds = n
+    print(day, "days", hour, "hours",minutes, "minutes",seconds, "seconds")
+
+
+# problem 69:  Three numbers denoted by the variables A, B and C are supplied as input data. Print
+# these three number in ascending order.
+def problem_69():
+    A = float(input("Enter the first number (A): "))
+    B = float(input("Enter the second number (B): "))
+    C = float(input("Enter the third number (C): "))
+    minimum = min(A, B, C)
+    maximum = max(A, B, C)
+    middle = A + B + C - minimum - maximum
+    print("Numbers in ascending order:")
+    print(minimum)
+    print(middle)
+    print(maximum)
+
+# problem 70: Write an if-else statement that outputs the word “Warning” provided that either the
+# value of the variable temperature is greater than or equal to 100, or the value of the
+# variable pressure is greater than or equal to 200, or both. Otherwise, the if-else
+# statement outputs the work “OK”
 def problem_70():
-    unit_list = [
-        {"unit": 1, "cost": 10, "margin": 10, "price": 10},
-        # {"unit": 2, "cost": 5, "margin": 5, "price": 10},
-        # {"unit": 3, "cost": 6, "margin": 2, "price": 8},
-        {"unit": 4, "cost": 7, "margin": 3, "price": 10}
-    ]
-    num_units = len(unit_list)
-    expected_units = set(range(1, num_units + 1))
-    for unit in unit_list:
-        expected_units.discard(unit['unit'])
-    if expected_units:
-        missing_units = ', '.join(str(unit) for unit in expected_units)
-        print(f"Error: Missing unit(s) {missing_units}")
+    temperature = float(input("Enter the temperature: "))
+    pressure = float(input("Enter the pressure: "))
+    if temperature >= 100 or pressure >= 200:
+        print("Warning")
     else:
-        print("All units are present")
-
-#
-
-def problem_71():
-    unit_list = [
-        {"unit": 1, "cost": 10, "margin": 10, "price": 10},
-        {"unit": 2, "cost": 5, "margin": 5, "price": 10},
-        # {"unit": 3, "cost": 6, "margin": 2, "price": 8},
-        {"unit": 4, "cost": 7, "margin": 3, "price": 10}
-    ]
-
-    is_continuous = all(unit_list[i]["unit"] + 1 == unit_list[i+1]["unit"] for i in range(len(unit_list)-1))
-
-    if is_continuous:
         print("OK")
+
+# problem 70:Input two positive integers and a and b from the user. Determine the integer of a/b.
+# Assume that the division operator is not available:
+def problem_70():
+    a = int(input("Enter a positive integer a: "))
+    b = int(input("Enter a positive integer b: "))
+    quotient = 0
+
+    while a >= b:
+        a -= b
+        quotient += 1
+    print("Integer division a/b:", quotient)
+
+#problem 71: Input two positive integers a and b from the user. Determine the remainder of a/b.
+# Assume that the division and modulus operators are not available
+def problem_71():
+    a = int(input("Enter a positive integer a: "))
+    b = int(input("Enter a positive integer b: "))
+    if b == 0:
+        print("Error: Division by zero")
     else:
-        print("Error")
+        remainder = a
+        while remainder >= b:
+            remainder -= b
+        print("Remainder of a/b:", remainder)
+
+
+
+
+
+# # unit_list [{"unit":1, "cost":10, "margin":10, "price":10}
+# # {"unit":2, "cost":5, "margin":5, "price":10}
+# # {"unit":3, "cost":6, "margin":2, "price":8}
+# # {"unit":4, "cost":7, "margin":3, "price":10}]
+# def problem_73():
+#     unit_list = [
+#         {"unit": 1, "cost": 10, "margin": 10, "price": 10},
+#         # {"unit": 2, "cost": 5, "margin": 5, "price": 10},
+#         # {"unit": 3, "cost": 6, "margin": 2, "price": 8},
+#         {"unit": 4, "cost": 7, "margin": 3, "price": 10}
+#     ]
+#     num_units = len(unit_list)
+#     expected_units = set(range(1, num_units + 1))
+#     for unit in unit_list:
+#         expected_units.discard(unit['unit'])
+#     if expected_units:
+#         missing_units = ', '.join(str(unit) for unit in expected_units)
+#         print(f"Error: Missing unit(s) {missing_units}")
+#     else:
+#         print("All units are present")
+#
+# #
+#
+# def problem_74():
+#     unit_list = [
+#         {"unit": 1, "cost": 10, "margin": 10, "price": 10},
+#         {"unit": 2, "cost": 5, "margin": 5, "price": 10},
+#         # {"unit": 3, "cost": 6, "margin": 2, "price": 8},
+#         {"unit": 4, "cost": 7, "margin": 3, "price": 10}
+#     ]
+#
+#     is_continuous = all(unit_list[i]["unit"] + 1 == unit_list[i+1]["unit"] for i in range(len(unit_list)-1))
+#
+#     if is_continuous:
+#         print("OK")
+#     else:
+#         print("Error")
+
+
 
 
 
@@ -848,9 +969,15 @@ if __name__ == '__main__':
     # problem_61()
     # problem_62()
     # problem_63()
-    problem_64()
+    # problem_64()
+    #  problem_65()
+    # problem_66()
+    # problem_67()
+    # problem_68()
+    # problem_69()
     # problem_70()
-    # problem_71()
+    # problem_73()
+    # problem_74()
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
 
 
