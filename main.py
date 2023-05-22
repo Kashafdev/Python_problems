@@ -725,9 +725,147 @@ def problem_prac2():
     else:
         print("Error")
 
+# Input number and store its equivalent in base-9 as a single numeric value and display it
+def problem_65():
+    def decimal_to_base9(decimal_num):
+        if decimal_num == 0:
+            return 0
+
+        base9_num = 0
+        power = 0
+
+        while decimal_num > 0:
+            remainder = decimal_num % 9
+            base9_num += remainder * (10 ** power)
+            decimal_num //= 9
+            power += 1
+
+        return base9_num
+
+    decimal_input = int(input("Enter a decimal number: "))
+
+    base9_value = decimal_to_base9(decimal_input)
+
+    print("Base-9 equivalent:", base9_value)
+
+# Input number and store its equivalent in base-9 as a single numeric value and display it
+def problem_66():
+    def decimal_to_base9(decimal_num):
+        if decimal_num == 0:
+            return 0
+
+        base9_num = 0
+        power = 0
+
+        while decimal_num > 0:
+            remainder = decimal_num % 9
+            base9_num += remainder * (10 ** power)
+            decimal_num //= 9
+            power += 1
+
+        return base9_num
+
+    decimal_input = int(input("Enter a decimal number: "))
+
+    base9_value = decimal_to_base9(decimal_input)
+
+    print("Base-9 equivalent:", base9_value)
+
+# Input a base-9 number, digit by digit, then convert it into binary number a single
+# numeric value. Digits of the input will be entered in order from least significant to
+# most significant. Since valid digits are 0 to 8, hence any other input will be used as
+# sentinel value
+def problem_67():
+    base9_number = ""
+    binary_number = ""
+
+    while True:
+        digit = input("Enter a base-9 digit (0-8) or any other value to stop: ")
+        if digit.isdigit() and 0 <= int(digit) <= 8:
+            base9_number = digit + base9_number
+        else:
+            break
+
+    if base9_number:
+        base10_number = 0
+        power = 0
+
+        for digit in base9_number:
+            base10_number = base10_number * 9 + int(digit)
+
+        binary_number = bin(base10_number)[2:]
+
+    print("Binary representation:", binary_number)
 
 
-    # Press the green button in the gutter to run the script.
+# Input a decimal integer and display its hexadecimal equivalent digit-by-digit. The
+# hexadecimal output should be in order from least significant to most significant
+def problem_68():
+    def decimal_to_hex(decimal_num):
+        if decimal_num == 0:
+            return "0"
+
+        hex_digits = "0123456789ABCDEF"
+        hex_num = ""
+
+        while decimal_num > 0:
+            remainder = decimal_num % 16
+            hex_digit = hex_digits[remainder]
+            hex_num = hex_digit + hex_num
+            decimal_num //= 16
+
+        return hex_num
+
+    decimal_input = int(input("Enter a decimal integer: "))
+
+    hex_value = decimal_to_hex(decimal_input)
+
+    print("Hexadecimal equivalent (digit-by-digit):")
+    for digit in hex_value:
+        print(digit)
+
+# Three numbers denoted by the variables A, B and C are supplied as input data. Print
+# these three number in ascending order
+def problem_69():
+    num1 = int(input("Enter the first number:"))
+    num2 = int(input("Enter the second number:"))
+    num3 = int(input("Enter the third number:"))
+
+    maximum = max(num1, num2, num3)
+    minimum = min(num1, num2, num3)
+    middle = num1 + num2 + num3 - maximum - minimum
+    print(minimum,middle,maximum)
+
+# Write an if-else statement that outputs the word “Warning” provided that either the
+# value of the variable temperature is greater than or equal to 100, or the value of the
+# variable pressure is greater than or equal to 200, or both. Otherwise, the if-else
+# statement outputs the work “OK”.
+def problem_70():
+    temperature = float(input("Enter the first value:"))
+    pressure = float(input("Enter the second value:"))
+    if temperature >= 100 and pressure >= 200:
+        print("Warning")
+    else:
+        print("OK")
+
+# Input two positive integers and a and b from the user. Determine the integer of a/b.Assume that the division operator is not available.
+def problem_71():
+    num1 = int(input("Enter the first number:"))
+    num2 = int(input("Enter the second number:"))
+    Quotient = num1 // num2
+    print(Quotient)
+
+# Input two positive integers a and b from the user. Determine the remainder of a/b.
+# Assume that the division and modulus operators are not available
+def problem_72():
+    num1 = int(input("Enter the first number:"))
+    num2 = int(input("Enter the second number:"))
+    remainder = num1
+    while remainder >= num2:
+        remainder -= num2
+        print(remainder)
+
+# Press the green button in the gutter to run the script.
 if __name__ == '__main__':
     print_hi('PyCharm')
     # problem_1()
@@ -794,11 +932,15 @@ if __name__ == '__main__':
     # problem_63()
     # problem_64()
     # problem_prac1()
-    problem_prac2()
-
-
-
-
+    # problem_prac2()
+    # problem_65()
+    # problem_66()
+    # problem_67()
+    # problem_68()
+    # problem_69()
+    # problem_70()
+    # problem_71()
+    problem_72()
 
 
 
