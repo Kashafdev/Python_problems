@@ -918,6 +918,322 @@ def problem_60():
 
     print("Numbers divisible by 2, 3, or 5 between", start_limit, "and", end_limit, "are:", divisible_numbers)
 
+def problem_61():
+    # Input SLimit and ELimit from user and display only those numbers between range
+    # which divisible by 2 and 3 and 5, with both limits included.
+
+    SLimit = int(input("Enter the starting limit: "))
+    ELimit = int(input("Enter the ending limit: "))
+
+    # Ensure the starting limit is less than or equal to the ending limit
+    if SLimit > ELimit:
+        print("Invalid range. The starting limit should be less than or equal to the ending limit.")
+    else:
+        # Iterate through the range and check divisibility by 2, 3, and 5
+        for num in range(SLimit, ELimit + 1):
+            if num % 2 == 0 and num % 3 == 0 and num % 5 == 0:
+                print(num)
+
+
+def problem_62():
+    #     Input 2 numbers and find their GCD
+    def find_gcd(a, b):
+        while b != 0:
+            a, b = b, a % b
+        return a
+    num1 = int(input("Enter the first number: "))
+    num2 = int(input("Enter the second number: "))
+
+    gcd = find_gcd(num1, num2)
+    print("The GCD of", num1, "and", num2, "is", gcd)
+
+
+def problem_63():
+    # Input 3 numbers and find their GCD
+    def find_gcd(a, b):
+        while b != 0:
+            a, b = b, a % b
+        return a
+
+    def find_gcd_three_numbers(a, b, c):
+        gcd_ab = find_gcd(a, b)
+        gcd_abc = find_gcd(gcd_ab, c)
+        return gcd_abc
+
+    num1 = int(input("Enter the first number: "))
+    num2 = int(input("Enter the second number: "))
+    num3 = int(input("Enter the third number: "))
+
+    gcd = find_gcd_three_numbers(num1, num2, num3)
+
+    print("The GCD of", num1, ",", num2, ", and", num3, "is", gcd)
+
+
+def problem_64():
+    # Input 2 numbers and display their LCM.
+    def find_lcm(a, b):
+        # Find the maximum of the two numbers
+        max_num = max(a, b)
+
+        # Start with the larger number as the LCM
+        lcm = max_num
+
+        # Check if the current lcm is divisible by both numbers
+        while True:
+            if lcm % a == 0 and lcm % b == 0:
+                break
+            lcm += max_num
+
+        return lcm
+    # Input the two numbers
+    num1 = int(input("Enter the first number: "))
+    num2 = int(input("Enter the second number: "))
+
+    # Calculate and display the LCM
+    lcm = find_lcm(num1, num2)
+    print("The LCM of", num1, "and", num2, "is", lcm)
+
+
+def problem_65():
+    # Input a number and display that how many digits it has.
+    def count_digits(num):
+        # Convert the number to a string and calculate the length
+        num_str = str(num)
+        num_digits = len(num_str)
+        return num_digits
+    num = int(input("Enter a number: "))
+    # Calculate and display the number of digits
+    num_digits = count_digits(num)
+    print("The number", num, "has", num_digits, "digits.")
+
+def problem_66():
+    #   Input a base-9 number, digit by digit, then convert it into decimal number. Digits of
+    # the input will be entered in order from most significant to least significant. Since
+    # valid digits are 0 to 8, hence any other input will be used as sentinel value.
+    def convert_to_decimal(base9):
+        decimal = 0
+        power = 0
+
+        # Iterate through each digit in reverse order.
+        for digit in reversed(base9):
+            # Check if the digit is within the valid range
+            if digit < 0 or digit > 8:
+                break
+
+            # Calculate the decimal value of the digit
+            decimal += digit * (9 ** power)
+            power += 1
+
+        return decimal
+
+    # Input the base-9 number digit by digit
+    base9 = []
+    while True:
+        digit = int(input("Enter a digit (0 to 8) or any other value to stop: "))
+        if digit < 0 or digit > 8:
+            break
+        base9.append(digit)
+
+    # Convert the base-9 number to decimal
+    decimal = convert_to_decimal(base9)
+    print("The decimal equivalent of the base-9 number is:", decimal)
+
+
+def problem_67():
+    # Input a number and display its equivalent in base-9 (one digit per line, starting from
+    # the least significant.
+    def convert_to_base9(decimal):
+        base9 = []
+
+        # Convert the decimal number to base-9
+        while decimal > 0:
+            digit = decimal % 9
+            base9.append(digit)
+            decimal //= 9
+
+        # Reverse the base-9 digits to get the correct order
+        base9.reverse()
+
+        return base9
+
+    # Input the decimal number
+    decimal = int(input("Enter a decimal number: "))
+
+    # Convert the decimal number to base-9
+    base9 = convert_to_base9(decimal)
+
+    # Display the base-9 digits
+    print("The base-9 equivalent of the decimal number is:")
+    for digit in base9:
+        print(digit)
+
+
+def problem_68():
+    # Input number and store its equivalent in base-9 as a single numeric value and
+    # display it.
+    def convert_to_base9(decimal):
+        base9 = 0
+        power = 0
+
+        # Convert the decimal number to base-9
+        while decimal > 0:
+            digit = decimal % 9
+            base9 += digit * (10 ** power)
+            decimal //= 9
+            power += 1
+
+        return base9
+
+    # Input the decimal number
+    decimal = int(input("Enter a decimal number: "))
+
+    # Convert the decimal number to base-9
+    base9 = convert_to_base9(decimal)
+
+    # Display the base-9 value
+    print("The base-9 equivalent of the decimal number is:", base9)
+
+
+def problem_69():
+    # Input a base-9 number, digit by digit, then convert it into binary number a single
+    # numeric value. Digits of the input will be entered in order from least significant to
+    # most significant. Since valid digits are 0 to 8, hence any other input will be used as
+    # sentinel value.
+    def convert_to_binary(base9):
+        binary = 0
+        power = 0
+
+        # Iterate through each digit in reverse order
+        for digit in reversed(base9):
+            # Check if the digit is within the valid range
+            if digit < 0 or digit > 8:
+                break
+
+            # Convert the base-9 digit to binary and add it to the result
+            binary += digit * (9 ** power)
+            power += 1
+
+        return bin(binary)[2:]  # Convert to binary string and remove the '0b' prefix
+
+    # Input the base-9 number digit by digit
+    base9 = []
+    while True:
+        digit = int(input("Enter a digit (0 to 8) or any other value to stop: "))
+        if digit < 0 or digit > 8:
+            break
+        base9.append(digit)
+
+    # Convert the base-9 number to binary
+    binary = convert_to_binary(base9)
+
+    # Display the binary value
+    print("The binary equivalent of the base-9 number is:", binary)
+
+
+def problem_70():
+    #  Input a decimal integer and display its hexadecimal equivalent digit-by-digit. The
+    # hexadecimal output should be in order from least significant to most significant.
+    def convert_to_hex(decimal):
+        hex_digits = "0123456789ABCDEF"
+        hex_value = ""
+
+        # Convert the decimal number to hexadecimal
+        while decimal > 0:
+            digit = decimal % 16
+            hex_value = hex_digits[digit] + hex_value
+            decimal //= 16
+
+        return hex_value
+
+    # Input the decimal integer
+    decimal = int(input("Enter a decimal integer: "))
+
+    # Convert the decimal number to hexadecimal
+    hexadecimal = convert_to_hex(decimal)
+
+    # Display the hexadecimal digits
+    print("The hexadecimal equivalent of the decimal integer is:")
+    for digit in hexadecimal:
+        print(digit)
+
+
+def problem_71():
+    #  Three numbers denoted by the variables A, B and C are supplied as input data. Print
+    # these three number in ascending order.
+    # Input the three numbers
+    A = float(input("Enter the first number (A): "))
+    B = float(input("Enter the second number (B): "))
+    C = float(input("Enter the third number (C): "))
+
+    # Find the minimum, middle, and maximum values
+    min_value = min(A, B, C)
+    max_value = max(A, B, C)
+    mid_value = (A + B + C) - min_value - max_value
+
+    # Print the numbers in ascending order
+    print("The numbers in ascending order are:")
+    print(min_value)
+    print(mid_value)
+    print(max_value)
+
+
+def problem_72():
+    # Write an if-else statement that outputs the word “Warning” provided that either the
+    # value of the variable temperature is greater than or equal to 100, or the value of the
+    # variable pressure is greater than or equal to 200, or both. Otherwise, the if-else
+    # statement outputs the work “OK”.
+    # Example values for temperature and pressure
+    temperature = 98
+    pressure = 210
+
+    # Check the conditions and output the result
+    if temperature >= 100 or pressure >= 200:
+        print("Warning")
+    else:
+        print("OK")
+
+
+def problem_73():
+    # Input two positive integers and a and b from the user. Determine the integer of a/b.
+    # Assume that the division operator is not available.
+    def integer_division(a, b):
+        count = 0
+
+        while a >= b:
+            a -= b
+            count += 1
+
+        return count
+
+    # Getting input from the user
+    num1 = int(input("Enter the dividend (a): "))
+    num2 = int(input("Enter the divisor (b): "))
+
+    result = integer_division(num1, num2)
+    print(f"The integer division of {num1}/{num2} is: {result}")
+
+
+def problem_74():
+    # Input two positive integers a and b from the user. Determine the remainder of a/b.
+    # Assume that the division and modulus operators are not available.
+    def integer_division(a, b):
+        count = 0
+
+        while a >= b:
+            a -= b
+            count += 1
+
+        return count
+
+    # Getting input from the user
+    num1 = int(input("Enter the dividend (a): "))
+    num2 = int(input("Enter the divisor (b): "))
+
+    result = integer_division(num1, num2)
+    print(f"The integer division of {num1}/{num2} is: {result}")
+
+
+
 
 if __name__ == '__main__':
 
@@ -980,4 +1296,18 @@ if __name__ == '__main__':
     # problem_57()
     # problem_58()
     # problem_59()
-    problem_60()
+    # problem_60()
+    # problem_61()
+    # problem_62()
+    #  problem_63()
+    # problem_64()
+    # problem_65()
+    # problem_66()
+    # problem_67()
+    # problem_68()
+    # problem_69()
+    # problem_70()
+    # problem_71()
+    # problem_72()
+    # problem_73
+    problem_74()
