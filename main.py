@@ -63,26 +63,40 @@ def problem_5():
 # Check whether a number is divisible by another user-given number or not
 def problem_6():
     # fixme take both input from user and what if num2 = 0 ??
-    num1 = 20
-    num2 = int(input("Enter the number"))
-    if num1 % num2 == 0:
-        print("num1 is divisible by num2")
+    num1 = int(input("Enter the first number"))
+    num2 = int(input("Enter the second number"))
+    if num2 == 0:
+        print("The second number cannot be zero. Please provide a non-zero value.")
     else:
-        print("num1 is not divisible by num2")
+        if num1 % num2 == 0:
+            print("num1 is divisible by num2")
+        else:
+            print("num1 is not divisible by num2")
 
 
 # Sum of odd numbers from 10 user-given numbers
 def problem_7():
     # todo do it your self
-    n = int(input("Enter the number"))
-    print(sum([i for i in range(1, n + 1, 2)]))
+    sum = 0
 
+    for i in range(10):
+        num = int(input("Enter the number:"))
+        if num % 2 != 0:
+            sum += num
+        print(sum)
 
 # Sum of even number from n user-given numbers. Where n is also user-input.
 def problem_8():
     # todo do it your self
-    n = int(input("Enter the number"))
-    print(sum([i for i in range(2, n + 1, 2)]))
+    sum = 0
+    n = int(input())
+
+    for i in range(n):
+        num = int(input("Enter the number:"))
+        if num % 2 == 0:
+            sum += num
+        print(sum)
+
 
 
 # Show first n terms of Fibonacci series
@@ -107,18 +121,12 @@ def problem_10():
 # Calculating pay for an employee, given the hours worked and rate per hour.
 def problem_11():
     # todo do it your self
-    hours = int(input('Enter total number of hours worked: '))
-    rate = int(input('Enter per hour payment in $: '))
+    hours_worked = int(input("Enter the number of hours worked: "))
+    rate_per_hour = int(input("Enter the rate per hour: "))
 
-    def calculate_pay(hours, rate):
-        if hours > 40:
-            extra_hours = hours - 40
-            total_pay = 40 * rate + extra_hours * 1.5 * rate
-            return total_pay
+    pay = hours_worked * rate_per_hour
 
-        return hours * rate
-
-    print('pay: ${}'.format(calculate_pay(hours, rate)))
+    print(pay)
 
 
 # Determine the status of a student (pass or fail) given his/her marks in a subject  (passing marks = 50)
@@ -272,16 +280,17 @@ def problem_23():
 # Displaying positive integers in the range from 1 to n, where n is taken from the user.
 def problem_24():
     #fixme what if he/she enter negative number ?
-    num = 1
-    n = input("Enter the number")
-    for num in range(1, n):
-        if num >= 1:
-            print(num)
+    n = int(input("Enter a positive integer: "))
+    for i in range(1, n + 1):
+        if n > 0:
+            print(i)
+        else:
+            print("Error")
 
 
 # Calculate the factorial of a positive integer entered by the user
 def problem_25():
-    num = int(input("Enter a positive integer: "))
+    num = int(input("Enter a integer: "))
     factorial = 1
     if num < 0:
         print("Factorial is not defined for negative numbers.")
@@ -1039,12 +1048,12 @@ if __name__ == '__main__':
     # problem_16()
     # problem_17()
     # problem_18()
-    problem_19()
+    # problem_19()
     # problem_20()
     # problem_21()
     # problem_22()
     # problem_23()
-    # problem_24()
+    problem_24()
     # problem_25()
     # problem_26()
     # problem_27()
