@@ -71,6 +71,7 @@ def problem_6():
 
 def problem_7():
     # Sum of odd numbers from 10 user-given numbers
+    #todo create a loop and take 10 inputs from user
     user1 = 3
     user2 = 5
     user3 = 7
@@ -314,24 +315,25 @@ def problem_22():
     numbers = []  # Create an empty list to store the numbers
 
     # Use a for loop to iterate 10 times
+    sum =0
     for i in range(10):
         # Prompt the user to enter a number and convert it to float
         num = float(input(f"Enter number {i + 1}: "))
-
+        sum = sum + num
         # Add the number to the 'numbers' list
-        numbers.append(num)
+        # numbers.append(num)
 
     # Calculate the sum of the numbers using the sum() function
-    sum_of_numbers = sum(numbers)
+    # sum_of_numbers = sum(numbers)
 
     # Print the sum of the numbers
-    print("The sum of the numbers is:", sum_of_numbers)
+    print("The sum of the numbers is:", sum)
 
 
 def problem_23():
     # Finding the sum of n numbers taken from the user. Where n is taken from the user
     # as well.
-
+    #todo  do it without list comprihenshion
     n = int(input("Enter the value of n: "))
     numbers = []
     for i in range(n):
@@ -356,7 +358,7 @@ def problem_24():
 def problem_25():
     # Displaying positive integers in the range from 1 to n, where n is taken from the user.
     n = int(input("Enter a positive integer: "))
-
+    #fixme do it using loop thia logic is wrong
     if n < 1:
         print("Please enter a positive integer.")
     else:
@@ -501,10 +503,11 @@ def problem_32():
     divisors = []
     for i in range(1, n + 1):
         if n % i == 0:
-            divisors.append(i)
+            # divisors.append(i)
+            print(n)
 
-    for divisor in divisors:
-        print(divisor)
+    # for divisor in divisors:
+    #     print(divisor)
 
 
 def problem_33():
@@ -534,6 +537,7 @@ def problem_34():
         print(n, "is not a prime number.")
     else:
         is_prime = True
+        # for i in range(2, n):
         for i in range(2, int(n ** 0.5) + 1):
             if n % i == 0:
                 is_prime = False
@@ -551,12 +555,12 @@ def problem_35():
     while True:
         n = int(input("Enter a positive integer: "))
         if n > 0:
-            break
+            print("You entered:", n)
         else:
             print("Invalid input. Please enter a positive integer.")
 
     # Continue with the rest of your code using the valid 'n'
-    print("You entered:", n)
+
 
 
 def problem_36():
@@ -621,6 +625,7 @@ def problem_40():
     print("Number of odd numbers:", count)
 
 def problem_41():
+    #todo do it without using max()
     # Input 3 numbers and print the 2 largest numbers
     number1 = int(input("Enter the first number: "))
     number2 = int(input("Enter the second number: "))
@@ -640,6 +645,7 @@ def problem_41():
 
 def problem_42():
     # Input a number and find if it is 2-digit positive integer or no
+    #fixme if user enter -99  hint: use len()
     number = int(input("Enter a number: "))
 
     if number >= 10 and number < 100:
@@ -744,6 +750,7 @@ def problem_48():
     print("Product:", product)
 
 def problem_49():
+    #fixme what if number2 = 0 ?
     # Input 2 numbers and print YES if 1st is divisible by 2nd.
     number1 = int(input("Enter the first number: "))
     number2 = int(input("Enter the second number: "))
@@ -827,7 +834,7 @@ def problem_55():
     #  Check if it works for all positive inputs
     #  Now check algorithm # 55 (largest number) if it works for all negative inputs
     #  If you find any problem, then solve it.
-
+    #todo -float('inf') explain ?
     largest = -float('inf')
 
     while True:
@@ -865,7 +872,7 @@ def problem_57():
 
         if number % 2 == 0:
             even_count += 1
-        else:
+        elif number % 2 != 0:
             odd_count += 1
 
     print("Count of even numbers:", even_count)
@@ -937,6 +944,7 @@ def problem_61():
 
 def problem_62():
     #     Input 2 numbers and find their GCD
+    #todo explain
     def find_gcd(a, b):
         while b != 0:
             a, b = b, a % b
@@ -950,6 +958,7 @@ def problem_62():
 
 def problem_63():
     # Input 3 numbers and find their GCD
+    #todo explain
     def find_gcd(a, b):
         while b != 0:
             a, b = b, a % b
@@ -1241,7 +1250,7 @@ if __name__ == '__main__':
     # problem_2()
     # problem_3()
     # problem_4()
-    # problem_5()
+    problem_5()
     # problem_6()
     # problem_7()
     # problem_8()
@@ -1309,5 +1318,5 @@ if __name__ == '__main__':
     # problem_70()
     # problem_71()
     # problem_72()
-    # problem_73
-    problem_74()
+    # problem_73()
+    # problem_74()
