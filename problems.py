@@ -17,38 +17,47 @@ def problem_1():
 
 # Problem 2 :Input four numbers and generate the sum of these:
 def problem_2():
+  #   Input 4 number
   num1 = input("Enter the first number:")
   num2 = input("Enter the second number:")
   num3 = input("Enter the third number:")
   num4 = input("Enter the fourth number:")
+  # sum of 4 number
   total_sum = int(num1)+int(num2)+int(num3)+int(num4)
   print("The sum for four number is:",total_sum)
 
 #Problem 3: Sum and average of marks of five students taken from the user:
 def problem_3():
+    # input stu marks
     stu1 = float(input("Enter the first student marks:"))
     stu2 = float(input("Enter the second student marks:"))
     stu3 = float(input("Enter the third student marks:"))
     stu4 = float(input("Enter the fourth student marks:"))
     stu5 = float(input("Enter the five student marks:"))
+    # stu marks sum
     sum =  stu1 + stu2 + stu3 + stu4 + stu5
     print("The sum for five student marks is:",sum)
+    # stu average
     average = sum / 5
     print("The average of five student:",average)
 
 #problem 4 : Percentage of total marks of four students:
 def problem_4():
+    # input stu marks
     s1 = 50
     s2 = 40
     s3 = 80
     s4 = 90
+    # sum and average stu marks
     sum = s1 + s2 + s3 + s4
     average = sum / 4
+    # percentage of stu
     percentage = (sum / 400) * 100
     print("Percentage of total marks of four students:",percentage,"%")
 
 #problem 5: Check if a number is greater than 80, say “good”, if not say, “Try again”
 def problem_5():
+    # input num
     number = int(input("Enter a number:"))
     if number > 80:
         print("Good")
@@ -57,37 +66,49 @@ def problem_5():
 
 #problem 6: Check whether a number is divisible by another user-given number or not:
 def problem_6():
+    #todo what if he devide by zero ??
     num1 = 80
     num2 = int(input("Enter a number:"))
-    if num1 % num2 == 0:
+    # conditions
+    if num2 == 0:
+        print("Cannot divide by zero.")
+    elif num1 % num2 == 0:
         print("Number is Divisible")
     else:
         print("Number is not Divisible")
 
 #Problem 7 : Sum of odd numbers from 10 user-given numbers.
 def problem_7():
+    #fixme what if user enter some even and some odd no=umber the program will end after 10 inputs before getting 10 odd numbers from the user
     oddsum = 0
-    for _ in range(10):
-        n = int(input("Enter the end number : "))
+    count = 0
+    # while loop
+    while count < 10:
+        n = int(input("Enter a number: "))
         if n % 2 != 0:
-             oddsum += n
-        print("Sum of odd numbers is:",oddsum)
+            oddsum += n
+            count += 1
+
+    print("Sum of odd numbers is:", oddsum)
+
 
 #problem 8: Sum of even number from n user-given numbers. Where n is also user-input
 def problem_8():
-    n = int(input("Enter the number of n: "))
     evensum = 0
-
-    for i in range(n):
+    count = 0
+    # while loop
+    while count < 10:
         number = int(input("Enter a number: "))
         if number % 2 == 0:
             evensum += number
+            count += 1
 
     print("Sum of even numbers:", evensum)
 
 # problem 9: Converting temperature from Fahrenheit to Celsius [Formula: C = (f-32) * (5/9)]
 def problem_9():
     fahrenheit = float(input("Enter the temperature in Fahrenheit: "))
+    # formula
     celsius = (fahrenheit - 32) * (5 / 9)
     print("Temperature in Celsius:", celsius)
 
@@ -101,6 +122,7 @@ def problem_10():
 #  Determine the status of a student (pass or fail) given his/her marks in a subject
 # (passing marks = 50
 def problem_11():
+    # input student marks
     marks = float(input("Enter the student's marks: "))
     passing_mark = 50
 
@@ -112,6 +134,8 @@ def problem_11():
 def problem_12():
     num1 = int(input("Enter the first number:"))
     num2 = int(input("Enter the second number:"))
+    #fixme if both are equal ? then what ?
+
     if num1 > num2:
         largest = num1
     else:
@@ -163,7 +187,7 @@ def problem_15():
 def problem_16():
     hours = input("Enter hours:")
     h = float(hours)
-    rate = input("Enter the rate:")
+    rate = float(input("Enter the rate:"))
     x = float(rate)
     if h <= 40:
      print(h + x)
@@ -272,8 +296,29 @@ def problem_24():
     for i in range(n):
         number = int(input("Enter a number: "))
         sum += number
-        average = sum / n
+    average = sum / n
     print("The average is:",average)
+
+# Calculate the difference between two times given in 24-hour (hh: mm) format.
+#fixme use time library i.e deltatime
+time1 = input("Enter the first time (hh:mm): ")
+time2 = input("Enter the second time (hh:mm): ")
+
+hours1, minutes1 = map(int, time1.split(':'))
+hours2, minutes2 = map(int, time2.split(':'))
+
+total_minutes1 = hours1 * 60 + minutes1
+total_minutes2 = hours2 * 60 + minutes2
+
+difference_minutes = abs(total_minutes2 - total_minutes1)
+
+difference_hours = difference_minutes // 60
+difference_minutes = difference_minutes % 60
+print(f"The difference is {difference_hours} hours and {difference_minutes} minutes.")
+
+
+
+
 
 # problem 25: Displaying positive integers in the range from 1 to n, where n is taken from the user.
 def problem_25():
@@ -366,6 +411,7 @@ def problem_33():
 #problem 34: Take n number from the user and determine the largest number entered by the user,
 # where n is taken from the user as well.
 def problem_34():
+
     n = int(input("enter the number of values: "))
     largest = None
 
@@ -437,6 +483,7 @@ def problem_38():
 
 #problem 39:Input a number and find if it is 2-digit positive integer or not.
 def problem_39():
+    #fixme what if I enter negative number ??
     number = int(input("Enter a number: "))
     if number > 9 and number < 100:
         print("The number is a 2-digit positive integer.")
@@ -455,12 +502,14 @@ def problem_40():
 # problem 41: Input an integer (up to 4 digits) and store its reverse in another variable. Then
 # display both integers
 def problem_41():
+    #todo do it without list comrihenshen
     number = int(input("Enter an integer up to 4 digits: "))
     reversed_number = int(str(number)[::-1])
     print("Reversed number:", reversed_number)
 
 #problem 42:Interchange two numbers
 def problem_42():
+    #todo what if you're not using python
     num1 = int(input("Enter the first number: "))
     num2 = int(input("Enter the second number: "))
 
@@ -489,6 +538,10 @@ def problem_44():
     digit_sum = sum(int(digit) for digit in str(number))
     result = number * digit_sum
     print(result)
+    sum = 0
+    for num in str(number):
+        sum += int(num)
+
 
 # problem 45:Input 2 numbers and print YES if 1st is divisible by 2nd
 def problem_45():
@@ -588,6 +641,7 @@ def problem_53():
 
 # problem 54: Input 2 numbers and find their GCD
 def problem_54():
+    #fixme what if you're not using python
     num1 = int(input("Enter the first number: "))
     num2 = int(input("Enter the second number: "))
 
@@ -688,6 +742,7 @@ def problem_60():
 
 # problem 61:Input 3 numbers and find their GCD
 def problem_61():
+    #fixme without using python
     num1 = int(input("Enter first number:"))
     num2 = int(input("Enter second number:"))
     num3 = int(input("Enter third number:"))
@@ -712,6 +767,7 @@ def problem_62():
 # the input will be entered in order from least significant to most significant. Since
 # valid digits are 0 to 8, hence any other input will be used as the sentinel value.
 def problem_63():
+    #todo do it your self
     base9_num = 0
     power = 0
     while True:
@@ -835,7 +891,8 @@ def problem_70():
 
 # problem 70:Input two positive integers and a and b from the user. Determine the integer of a/b.
 # Assume that the division operator is not available:
-def problem_70():
+def problem_71():
+    #fixme what if b > a ??
     a = int(input("Enter a positive integer a: "))
     b = int(input("Enter a positive integer b: "))
     quotient = 0
@@ -845,9 +902,9 @@ def problem_70():
         quotient += 1
     print("Integer division a/b:", quotient)
 
-#problem 71: Input two positive integers a and b from the user. Determine the remainder of a/b.
+#problem 72: Input two positive integers a and b from the user. Determine the remainder of a/b.
 # Assume that the division and modulus operators are not available
-def problem_71():
+def problem_72():
     a = int(input("Enter a positive integer a: "))
     b = int(input("Enter a positive integer b: "))
     if b == 0:
@@ -857,6 +914,21 @@ def problem_71():
         while remainder >= b:
             remainder -= b
         print("Remainder of a/b:", remainder)
+
+# Input a decimal integer and display its hexadecimal equivalent digit-by-digit. The
+# hexadecimal output should be in order from least significant to most significant
+def problem_73():
+    decimal = int(input("Enter a decimal integer: "))
+    hexadecimal = ""
+
+    while decimal > 0:
+        remainder = decimal % 16
+        hexadecimal = str(remainder) + hexadecimal
+        decimal = decimal // 16
+
+    print("Hexadecimal equivalent: 0x" + hexadecimal)
+
+
 
 
 
@@ -901,9 +973,6 @@ def problem_71():
 #         print("Error")
 
 
-
-
-
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
     print_hi('PyCharm')
@@ -913,8 +982,8 @@ if __name__ == '__main__':
     # problem_4()
     # problem_5()
     # problem_6()
-    # problem_7()
-    # problem_8()
+    problem_7()
+    problem_8()
     # problem_9()
     # problem_10()
     # problem_11()
@@ -976,6 +1045,8 @@ if __name__ == '__main__':
     # problem_68()
     # problem_69()
     # problem_70()
+    # problem_71()
+    # problem_72()
     # problem_73()
     # problem_74()
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
