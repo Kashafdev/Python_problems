@@ -72,7 +72,7 @@ def problem_5():
 
 # problem 6: Check whether a number is divisible by another user-given number or not:
 def problem_6():
-    # todo what if he devide by zero ??
+
     num1 = 80
     num2 = int(input("Enter a number:"))
     # conditions
@@ -86,7 +86,6 @@ def problem_6():
 
 # Problem 7 : Sum of odd numbers from 10 user-given numbers.
 def problem_7():
-    # fixme what if user enter some even and some odd no=umber the program will end after 10 inputs before getting 10 odd numbers from the user
     oddsum = 0
     count = 0
     # while loop
@@ -144,7 +143,7 @@ def problem_11():
 
 # problem 12: Take two number from the user and determine the largest number
 def problem_12():
-    # fixme if both are equal ? then what ?
+
     num1 = int(input("Enter the first number:"))
     num2 = int(input("Enter the second number:"))
 
@@ -333,7 +332,7 @@ def problem_24():
 
 # Calculate the difference between two times given in 24-hour (hh: mm) format.
 def problem_75():
-    # fixme use time library i.e deltatime
+
     from datetime import datetime, timedelta
 
     time_format = "%H:%M"
@@ -526,17 +525,19 @@ def problem_38():
     print("The two largest numbers are:", largest, "and", sec_largest)
 
 
-# problem 39:Input a number and find if it is 2-digit positive integer or not.
+# problem 39:Input a number and find if it is 2-digit integer or not.
 def problem_39():
-    # fixme what if I enter negative number ??
     number = int(input("Enter a number: "))
 
-    if number > 9 and number < 100:
-        print("The number is a 2-digit positive integer.")
-    elif number < 0:
-        print("The number is negative.")
+    if -99 <= number < 100:
+        # if number > 0:
+            print("The number is 2-digit positive integer.")
+        # elif number < 0:
+        #     print("The number is 2-digit negative integer.")
+        # else:
+            # print("The number is zero.")
     else:
-        print("The number is not a 2-digit positive integer.")
+        print("The number is not a 2-digit integer.")
 
 
 # problem 40 :Input a 2-digit number and find the absolute difference between its digits
@@ -551,7 +552,6 @@ def problem_40():
 # problem 41: Input an integer (up to 4 digits) and store its reverse in another variable. Then
 # display both integers
 def problem_41():
-    # todo do it without list comrihenshen
     number = int(input("Enter an integer up to 4 digits: "))
     reversed_number = 0
 
@@ -565,7 +565,6 @@ def problem_41():
 
 # problem 42:Interchange two numbers
 def problem_42():
-    # todo what if you're not using python
     num1 = int(input("Enter the first number: "))
     num2 = int(input("Enter the second number: "))
 
@@ -598,9 +597,12 @@ def problem_44():
     digit_sum = sum(int(digit) for digit in str(number))
     result = number * digit_sum
     print(result)
+
     sum = 0
     for num in str(number):
         sum += int(num)
+
+    print(sum)
 
 
 # problem 45:Input 2 numbers and print YES if 1st is divisible by 2nd
@@ -622,7 +624,7 @@ def problem_46():
     if number2 % number1 == 0:
         print("YES")
     else:
-        print("NO")
+        print("No")
 
 
 # problem 47: Input 2 numbers and print YES if one number is divisible by the other.
@@ -710,7 +712,7 @@ def problem_53():
 
 # problem 54: Input 2 numbers and find their GCD
 def problem_54():
-    # fixme what if you're not using python
+
     num1 = int(input("Enter the first number: "))
     num2 = int(input("Enter the second number: "))
 
@@ -817,13 +819,15 @@ def problem_60():
 
 # problem 61:Input 3 numbers and find their GCD
 def problem_61():
-    # fixme without using python
     num1 = int(input("Enter first number:"))
     num2 = int(input("Enter second number:"))
     num3 = int(input("Enter third number:"))
 
     while num2 != 0:
-        num1, num2 = num2, num1 % num2
+        remainder = num1 % num2
+        num1 = num2
+        num2 = remainder
+
     gcd = num1
     print("The GCD of the three numbers is:", gcd)
 
@@ -844,16 +848,23 @@ def problem_62():
 # the input will be entered in order from least significant to most significant. Since
 # valid digits are 0 to 8, hence any other input will be used as the sentinel value.
 def problem_63():
-    # todo do it your self
-    base9_num = 0
-    power = 0
-    while True:
-        digit = int(input("Enter the number: "))
-        if digit < 0 or digit > 8:
-            break
-        base9_num += digit * (9 ** power)
-        power += 1
-    print(base9_num)
+    def base9_to_decimal():
+        decimal = 0
+        base = 1
+
+        while True:
+            digit = input("Enter a base-9 digit (0-8) or any other key to exit: ")
+
+            if not digit.isdigit() or int(digit) < 0 or int(digit) > 8:
+                break
+
+            decimal += int(digit) * base
+            base *= 9
+
+        return decimal
+
+    decimal_number = base9_to_decimal()
+    print("Decimal equivalent:", decimal_number)
 
 
 # problem 64 Input a base-9 number, digit by digit, then convert it into decimal number. Digits of
@@ -973,7 +984,6 @@ def problem_70():
 # problem 70:Input two positive integers and a and b from the user. Determine the integer of a/b.
 # Assume that the division operator is not available:
 def problem_71():
-    # fixme what if b > a ??
     a = int(input("Enter a positive integer a: "))
     b = int(input("Enter a positive integer b: "))
     quotient = 0
@@ -1094,7 +1104,7 @@ if __name__ == '__main__':
     # problem_36()
     # problem_37()
     # problem_38()
-    # problem_39()
+    problem_39()
     # problem_40()
     # problem_41()
     # problem_42()
@@ -1126,7 +1136,7 @@ if __name__ == '__main__':
     # problem_68()
     # problem_69()
     # problem_70()
-    problem_71()
+    # problem_71()
     # problem_72()
     # problem_73()
     # problem_74()
