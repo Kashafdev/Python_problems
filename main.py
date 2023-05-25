@@ -62,7 +62,7 @@ def problem_5():
 
 # Check whether a number is divisible by another user-given number or not
 def problem_6():
-    # fixme take both input from user and what if num2 = 0 ??
+
     num1 = int(input("Enter the first number"))
     num2 = int(input("Enter the second number"))
     if num2 == 0:
@@ -76,7 +76,6 @@ def problem_6():
 
 # Sum of odd numbers from 10 user-given numbers
 def problem_7():
-    # todo do it your self
     sum = 0
 
     for i in range(10):
@@ -87,7 +86,6 @@ def problem_7():
 
 # Sum of even number from n user-given numbers. Where n is also user-input.
 def problem_8():
-    # todo do it your self
     sum = 0
     n = int(input())
 
@@ -120,7 +118,6 @@ def problem_10():
 
 # Calculating pay for an employee, given the hours worked and rate per hour.
 def problem_11():
-    # todo do it your self
     hours_worked = int(input("Enter the number of hours worked: "))
     rate_per_hour = int(input("Enter the rate per hour: "))
 
@@ -279,13 +276,25 @@ def problem_23():
 
 # Displaying positive integers in the range from 1 to n, where n is taken from the user.
 def problem_24():
-    #fixme what if he/she enter negative number ?
-    n = int(input("Enter a positive integer: "))
-    for i in range(1, n + 1):
-        if n > 0:
-            print(i)
+    #
+    # if n > 0:
+    #     for i in range(1, n + 1):
+    #         print(i)
+    # else:
+    #     print("Error: Please enter a positive integer.")
+    count = 0
+    n = int(input("Enter limit "))
+    while True:
+        number = int(input("Enter a positive integer: "))
+        if number > 0:
+            print(number)
+            count +=1
+            if count == n:
+                break
         else:
-            print("Error")
+            print("Please enter a positive integer")
+
+
 
 
 # Calculate the factorial of a positive integer entered by the user
@@ -426,20 +435,21 @@ def problem_35():
             total += num
     print(total)
 
-
+# Display negative of a number
 def problem_36():
-    #fixme what if he enter negative value?
-    num = input("Enter the number")
+    num = 5
     negative_num = -num
-    print(negative_num)
+    print("Negative of", num, "is", negative_num)
 
 
 # Find absolute of an input. Assume that the absolute operator is not available.
 def problem_37():
-    # fixme what if he enter negative value?
-    num = input("Enter the number:")
-    absolute_value = num if num >= 0 else -num
-    print(absolute_value)
+    num = float(input("Enter a number: "))
+    if num < 0:
+        abs_value = -num
+    else:
+        abs_value = num
+    print("The absolute value of", num, "is", abs_value)
 
 
 # Input 2 number and find if both are even, both are odd, or 1 even 1 odd.
@@ -487,7 +497,6 @@ def problem_40():
 
 # Input a number and find if it is 2-digit positive integer or not.
 def problem_41():
-    #fixme do it for negative aswell
     num = input("Enter the number:")
     if num >= 10 and num <= 99:
         print("The number is 2-digit positive number")
@@ -506,11 +515,17 @@ def problem_42():
 
 #  Input an integer (up to 4 digits) and store its reverse in another variable. Then display both integers.
 def problem_43():
-    #fixme do it without string comprihension
+
     num = int(input("Enter the number:"))
-    reverse_num = int(str(num)[::-1])
-    print(num)
-    print(reverse_num)
+    reverse_num = 0
+
+    while num > 0:
+        remainder = num % 10
+        reverse_num = (reverse_num * 10) + remainder
+        num = num // 10
+
+    print("Original number:", num)
+    print("Reversed number:", reverse_num)
 
 
 #  Interchange two numbers
@@ -526,7 +541,6 @@ def problem_44():
 
 # Interchange two numbers without using an extra variable
 def problem_45():
-    #fixme do it without python
     num1 = int(input("Enter the first number:"))
     num2 = int(input("Enter the second number:"))
     num1, num2 = num2, num1
@@ -551,21 +565,17 @@ def problem_46():
 
 # Multiply a number with the sum of its digits.
 def problem_47():
-    #fixme do it yourself
-
-    num = int(input("Enter the number:"))
-    product = 1
-
-    while (num != 0):
-        product = product * (num % 10)
-        num = num // 10
-
-    print(product)
+    number = 6432
+    digit_sum = sum(int(digit) for digit in str(number))
+    result = number * digit_sum
+    print(result)
+    sum = 0
+    for num in str(number):
+        sum += int(num)
 
 
 # Input 2 numbers and print YES if 1st is divisible by 2nd
 def problem_48():
-    #fixme what if num2 is zero ?
     num1 = int(input("Enter the First number:"))
     num2 = int(input("Enter the Second number:"))
     if num1 % num2 == 0:
@@ -576,7 +586,6 @@ def problem_48():
 
 # Input 2 numbers and print YES if 2nd is divisible by 1st
 def problem_49():
-    # fixme what if num2 is zero ?
     num1 = int(input("Enter the First number:"))
     num2 = int(input("Enter the Second number:"))
     if num2 % num1 == 0:
@@ -662,18 +671,18 @@ def problem_54():
 
 # Input 10 numbers, and display the smallest number
 def problem_55():
-    #fixme this program logic is wrong test it with differnt inputs
-    smallest_num = float()
+
+    smallest = None
 
     for i in range(10):
-        num = int(input("Enter a number: "))
-    if num < smallest_num:
-        smallest_num = min(num)
+        number = int(input("Enter a number: "))
+        if smallest is None or number < smallest:
+            smallest = number
 
-    print(smallest_num)
+    print(smallest)
 
 
-#  nput 10 numbers, and display count of even and odd numbers, separately, at the end
+#  Input 10 numbers, and display count of even and odd numbers, separately, at the end
 def problem_56():
     num = int(input("Enter the number:"))
     even_count = 0
@@ -721,33 +730,43 @@ def problem_58():
 
 #   Input 2 numbers and find their GCD
 def problem_59():
-    import math
-    #fixme without math funtion
-    num1 = int(input("Enter the first number:"))
-    num2 = int(input("Enter the second number:"))
-    result = math.gcd(num1, num2)
-    print(result)
+
+    num1 = int(input("Enter the first number: "))
+    num2 = int(input("Enter the second number: "))
+
+    while num2 != 0:
+        remainder = num1 % num2
+        num1 = num2
+        num2 = remainder
+
+    gcd = num1
+    print(gcd)
+
 
 
 # Input 3 numbers and find their GCD
 def problem_60():
-    import math
-    # fixme without math function
-    num1 = int(input("Enter the first number:"))
-    num2 = int(input("Enter the second number:"))
-    num3 = int(input("Enter the third number:"))
-    result = math.gcd(num1, num2, num3)
-    print(result)
+    num1 = int(input("Enter first number:"))
+    num2 = int(input("Enter second number:"))
+    num3 = int(input("Enter third number:"))
+
+    while num2 != 0:
+        num1, num2 = num2, num1 % num2
+    gcd = num1
+    print(gcd)
 
 
 # Input 2 numbers and display their LCM.
 def problem_61():
-    import math
-    # fixme without math function
-    num1 = int(input("Enter the first number:"))
-    num2 = int(input("Enter the second number:"))
-    result = math.lcm(num1, num2)
-    print(result)
+    num1 = int(input("Enter the first number: "))
+    num2 = int(input("Enter the second number: "))
+    a = num1
+    b = num2
+    while b != 0:
+        a, b = b, a % b
+    lcm = (num1 * num2) // a
+    print("The LCM of the two numbers is:", lcm)
+
 
 
 # Input a number and display that how many digits it has.
@@ -1053,7 +1072,7 @@ if __name__ == '__main__':
     # problem_21()
     # problem_22()
     # problem_23()
-    problem_24()
+    # problem_24()
     # problem_25()
     # problem_26()
     # problem_27()
@@ -1077,7 +1096,7 @@ if __name__ == '__main__':
     # problem_45()
     # problem_46()
     # problem_47()
-    # problem_48()
+    problem_48()
     # problem_49()
     # problem_50()
     # problem_51()
