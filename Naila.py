@@ -86,6 +86,19 @@ def problem_7():
     print("The sum of odd numbers:", sum)
 
 
+def problem_75():
+    #  Sum of odd numbers from 10 user-given numbers (USING LOOPS)
+    # Initialize the sum variable
+    sum_of_odds = 0
+
+    # Iterate 10 times
+    for _ in range(10):
+        number = int(input("Enter a number: "))
+        if number % 2 != 0:
+            sum_of_odds += number
+    print("Sum of odd numbers:", sum_of_odds)
+
+
 def problem_8():
     # Sum of even number from n user-given numbers. Where n is also user-input
     n = int(input("Enter the value of n: "))  # prompt user to input n
@@ -342,6 +355,27 @@ def problem_23():
     sum_of_numbers = sum(numbers)
     print("The sum of the numbers is:", sum_of_numbers)
 
+def problem_76():
+    #      Finding the sum of n numbers taken from the user. Where n is taken from the user
+    #     as well. ( WITHOUT LIST COMPREHENSION)
+
+    # Ask the user for the value of n
+    n = int(input("Enter the value of n: "))
+
+    # Initialize the sum variable
+    sum_of_numbers = 0
+
+    # Iterate 'n' times
+    for _ in range(n):
+        # Ask the user for a number
+        number = int(input("Enter a number: "))
+
+        # Add the number to the sum
+        sum_of_numbers += number
+
+    # Print the sum of numbers
+    print("Sum of numbers:", sum_of_numbers)
+
 
 def problem_24():
     # Finding the average of n number from the user, where n is user-given value.
@@ -365,6 +399,17 @@ def problem_25():
         print("Number\tValue")
         for i in range(1, n + 1):
             print(i, "\t", i * i)
+
+def problem_77():
+    # Displaying positive integers in the range from 1 to n, where n is taken from the user.
+    # (USING LOOPS)
+    # Ask the user for the value of n
+    n = int(input("Enter the value of n: "))
+
+    # Iterate from 1 to n (inclusive)
+    for i in range(1, n + 1):
+        # Display the positive integer
+        print(i)
 
 
 def problem_26():
@@ -1320,3 +1365,6 @@ if __name__ == '__main__':
     # problem_72()
     # problem_73()
     # problem_74()
+    # problem_75()
+    # problem_76()
+    problem_77()
